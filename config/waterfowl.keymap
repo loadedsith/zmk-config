@@ -8,11 +8,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-enum {
-    _ALPHA,   
-    _NUMBERS,
-    _SPECIAL
-};
 
 / {
     keymap {
@@ -36,10 +31,10 @@ enum {
     &kp Q        &kp W       &kp E       &kp R       &kp T           &kp Y   &kp U       &kp I       &kp O       &kp P
     &mt LCTRL A  &kp S       &kp D       &kp F       &kp G           &kp H   &kp J       &kp K       &kp L       &mt LCTRL SEMI
     &mt LSHIFT Z &kp X       &kp C       &kp V       &kp B           &kp N   &kp M       &kp COMMA   &kp DOT     &mt LSHIFT FSLH
-    &kp N1       &kp LALT   &mt LGUI RET &lt _SPECIAL SPACE   
+    &kp N1       &kp LALT   &mt LGUI RET &lt 2 SPACE   
     &kp N2      
     &kp N3  
-    &lt _NUMBERS  SPACE   &mt RGUI BSPC  &mt RSHIFT TAB   
+    &lt 1  SPACE   &mt RGUI BSPC  &mt RSHIFT TAB   
     &kp N4
             >;
 
