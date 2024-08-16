@@ -47,7 +47,7 @@
         combo_QUOTE {
             timeout-ms = <50>;
             key-positions = <25 26>;
-            bindings = <&kp DQT>;
+            bindings = <&kp SQT>;
         };
         combo_UNDER {
             timeout-ms = <50>;
