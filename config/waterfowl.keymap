@@ -9,9 +9,9 @@
 #include <dt-bindings/zmk/bt.h>
 
 enum {
-    _ALPHA,   // default
-    _NUMBERS,  // numbers/function/motion
-    _SPECIAL, // special characters
+    _ALPHA,   
+    _NUMBERS,
+    _SPECIAL
 };
 
 / {
