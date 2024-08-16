@@ -8,6 +8,99 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+/* Combomap
+ *
+ * ,-----------------------------.                          ,--------------------------------.
+ * |   0  |  1  |  2  |   3 |  4  |                         |  5  |  6  |  7  |  8   |  9    |
+ * |----- +-----+-----+-----+-----|                         |--------------------------------|
+ * |  10  |  11 | 12  | 13  | 14  |                         | 15  | 16  | 17  | 18   |  19   | 
+ * |------+-----+-----+-----+-----+    ,-----.   ,------.   |--------------------------------|
+ * |  20  |  21 | 22  | 23  | 24  |    |  25 |   |  26  |   |  27 | 28  | 29  | 30   |  31   |
+ * `------+-----+-----+------+----'    '-----'   '------'   `--------------------------------'
+ *         ,-----. .------------------.           .-----------------.    ,-----.
+ *         |  32 | | 33  | 34  | 35   |           | 36  |  37  | 38 |    | 39  |
+ *         `-----' '------------------'           '-----------------'    `-----'
+ *
+ *
+ * ,-----------------------------.                          ,--------------------------------.
+ * |      |    ESC    |     |     |                         |     |    ESC    |    BSLH      |
+ * |----- +-----+-----+-----+-----|                         |--------------------------------|
+ * |      |   BSPC   TAB  M |  M  |                         |    LT    SEMI   GT    |        | 
+ * |------+-----+-----+---B-+--B--+    ,-----.   ,------.   |--------------------------------|
+ * |      |   MINS    |   2 |  1  |    |     |   |      |   |    QUO   UNDR   |     |        |
+ * `------+-----+-----+------+----'    '-----'   '------'   `--------------------------------'
+ *        ,-----. .------------------.        .---------------.    ,-----.  
+ *        |     | |     |     |      |        |    |     |    |    |     |
+ *        `-----' '------------------'        '---------------'    `-----' 
+ */
+
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        
+        combo_MINUS {
+            timeout-ms = <50>;
+            key-positions = <21 12>;
+            bindings = <&kp MINUS>;
+        };
+        combo_QUOTE {
+            timeout-ms = <50>;
+            key-positions = <27 28>;
+            bindings = <&kp DQT>;
+        };
+        combo_UNDER {
+            timeout-ms = <50>;
+            key-positions = <28 29>;
+            bindings = <&kp UNDER>;
+        };
+        
+        
+        
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <1 2>;
+            bindings = <&kp ESC>;
+        };
+        combo_esc2 {
+            timeout-ms = <50>;
+            key-positions = <6 7>;
+            bindings = <&kp ESC>;
+        };
+        combo_BSLH {
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp BSLH>;
+        };
+        combo_BSPC {
+            timeout-ms = <50>;
+            key-positions = <11 12>;
+            bindings = <&kp BSPC>;
+        };
+        
+        
+        combo_TAB {
+            timeout-ms = <50>;
+            key-positions = <12 13>;
+            bindings = <&kp TAB>;
+        };
+        combo_LT {
+            timeout-ms = <50>;
+            key-positions = <15 16>;
+            bindings = <&kp LT>;
+        };
+        combo_SEMI {
+            timeout-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp SEMI>;
+        };
+        combo_GT {
+            timeout-ms = <50>;
+            key-positions = <17 18>;
+            bindings = <&kp GT>;
+        };
+    };
+};
 
 / {
     keymap {
