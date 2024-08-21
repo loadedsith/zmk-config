@@ -194,7 +194,7 @@
             bindings = <
     &kp EXCL      &kp AT         &kp HASH    &kp DLLR     &kp PIPE         &kp GRAVE       &kp TILDE       &kp LBRC      &kp RBRC     &kp BSLH
     &kp LG(LBRC)  &kp LG(RBRC)   &kp LEFT    &kp RIGHT    &kp UP           &kp PLUS        &kp MINUS       &kp BSLH      &kp SQT      &kp GRAVE
-    &kp PRCNT     &kp CARET      &kp LPAR    &kp RPAR     &kp DOWN         &kp AMPS        &kp EQUAL       &kp RBKT      &kp LBKT     &kp MINUS
+    &kp PRCNT     &kp CARET      &kp LPAR    &kp RPAR     &kp DOWN         &kp AMPS        &kp EQUAL       &kp LBKT      &kp RBKT     &kp MINUS
     &kp N1
     &trans        &trans         &kp EQUAL
     &kp N2
