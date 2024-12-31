@@ -176,7 +176,7 @@
     &bt BT_SEL 1
     &bt BT_SEL 2
     &trans &trans    &kp C_NEXT 
-    &kp BT_SEL 3
+    &bt BT_SEL 3
             >;
 
             sensor-bindings = <
