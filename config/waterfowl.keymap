@@ -42,12 +42,13 @@
 / {
     combos {
         compatible = "zmk,combos";
-        
+        /*
         combo_MINUS {
             timeout-ms = <50>;
-            key-positions = <21 12>;
+            key-positions = <21 22>;
             bindings = <&kp MINUS>;
         };
+        */
         combo_QUOTE {
             timeout-ms = <50>;
             key-positions = <25 26>;
@@ -128,7 +129,7 @@
  * |-----+-----+-----+-----+------|                           |--------------------------------|
  * |CTRL/a|  s  |  d  |  f  |  g  |                           |  h  |  j  |  k  |  l  | CTRL/; | 
  * |-----+-----+-----+-----+------+    ,-----.    ,-----.     |--------------------------------|
- * |SHFT/z|  x  |  c  |  v  |  b  |    |  2  |    |  3  |     |  n  |  m  |  ,  |  .  | SHFT// |
+ * |SHFT/z|  x  |  c  |  v  |  b  |    |  2  |  |Pause/Play|  |  n  |  m  |  ,  |  .  | SHFT// |
  * `------+-----+-----+------+----'    `-----'    `-----'     `--------------------------------'
  *         ,-----. .---------------------.           .-----------------.    ,-----.
  *         |BACK | | ALT|GUI/ENT|SPC(SYM)|           |SPC(NUM)|BSPC|TAB|    |Next |
@@ -139,18 +140,18 @@
     &mt LCTRL A  &kp S         &kp D       &kp F       &kp G           &kp H   &kp J       &kp K       &kp L       &mt LCTRL SEMI
     &mt LSHIFT Z &kp X         &kp C       &kp V       &kp B           &kp N   &kp M       &kp COMMA   &kp DOT     &mt LSHIFT FSLH
     &kp LG(LBRC)
-    &kp LALT     &mt LGUI RET  &lt 2 SPACE
-    &kp N2      
+    &kp LALT      &mt LGUI RET       &lt 2 SPACE
+    &kp N2
     &kp C_PP
-    &lt 1  SPACE   &mt RGUI BSPC  &mt RSHIFT TAB   
+    &lt 1 SPACE   &mt RGUI BSPC      &mt RSHIFT TAB   
     &kp C_NEXT 
             >;
 
             sensor-bindings = <
-                &inc_dec_kp LEFT RIGHT
-                &inc_dec_kp UP DOWN
+                &inc_dec_kp LEFT     RIGHT
+                &inc_dec_kp LG(Z)    LS(LG(Z))
                 &inc_dec_kp C_VOL_DN C_VOL_UP
-                &inc_dec_kp PAGE_DOWN PAGE_UP
+                &inc_dec_kp C_PREV   C_NEXT 
             >;
         };
 
@@ -161,10 +162,10 @@
  * |------------+-----+-----+-----+-----|                        |-------------------------------|
  * |  F1        | F2  | F3  | F4  |  F5 |                        | LFT | DWN | UP  | RGT |       | 
  * |------------+-----+-----+-----+-----+  ,-----.    ,-----.    |-------------------------------|
- * |  Shift/F6  | F7  | F8  | F9  | F10 |  | bt1 |    | bt2 |    | F11 | F12 | bt0 | bt1 |  bt2  |
+ * |  Shift/F6  | F7  | F8  | F9  | F10 |  |     |    |     |    | F11 | F12 | bt0 | bt1 |  bt2  |
  * `------------+-----+-----+-----+-----'  `-----'    `-----'    `-------------------------------'
  *          ,-----.   .-----------------.          .-----------------.   ,-----.
- *          |btClr|   |    |     |      |          |     |     | SKP |   |  bt3  |
+ *          |btClr|   |    |     |      |          |     |     | SKP |   |     |
  *          `-----'   '-----------------'          '-----------------'   `-----'
  */
             bindings = <
@@ -173,10 +174,10 @@
     &mt LSHIFT F6      &kp F7      &kp F8      &kp F9      &kp F10          &kp F11     &kp F12   &bt BT_SEL 0 &bt BT_SEL 1      &bt BT_SEL 2
     &bt BT_CLR
     &trans     &trans      &trans
-    &bt BT_SEL 1
-    &bt BT_SEL 2
+    &trans
+    &trans
     &trans &trans    &kp C_NEXT 
-    &bt BT_SEL 3
+    &trans
             >;
 
             sensor-bindings = <
@@ -195,22 +196,22 @@
  * |------------------------------|                        |--------------------------------|
  * | Back | Fwd | <-  |  -> | UP  |                        |  +  |  -  |  /  |  *  |    '   |
  * |------------------------------|   ,-----.    ,-----.   |--------------------------------|
- * |  %   |  ^  |  (  |  )  | DOWN|   |  2  |    |  3  |   |  &  |  =  |  [  |   ] |   -    |
+ * |  %   |  ^  |  (  |  )  | DOWN|   |     |    |     |   |  &  |  =  |  [  |   ] |   -    |
  * `------+-----+-----+------+----'   `-----'    `-----'   `--------------------------------' 
  *         ,-----.     .-----------------.           .------------------.   ,-----.
- *         |  1  |     |     |  ;  |  =  |           |  =  |  ;  |  DEL |   |  4  |
+ *         |     |     |     |  ;  |  =  |           |  =  |  ;  |  DEL |   |     |
  *         `-----'     '-----------------'           '------------------'   `-----'
  */
             bindings = <
     &kp EXCL      &kp AT         &kp HASH    &kp DLLR     &kp PIPE         &kp GRAVE       &kp TILDE       &kp LBRC      &kp RBRC     &kp BSLH
     &kp LG(LBRC)  &kp LG(RBRC)   &kp LEFT    &kp RIGHT    &kp UP           &kp PLUS        &kp MINUS       &kp BSLH      &kp ASTERISK &kp APOSTROPHE      
     &kp PRCNT     &kp CARET      &kp LPAR    &kp RPAR     &kp DOWN         &kp AMPS        &kp EQUAL       &kp LBKT      &kp RBKT     &kp MINUS
-    &kp N1
+    &trans
     &trans        &kp SEMI         &kp EQUAL
-    &kp N2
-    &kp N3
+    &trans
+    &trans
     &kp EQUAL     &kp SEMI       &kp DEL  
-    &kp N4
+    &trans
             >;
 
             sensor-bindings = <
