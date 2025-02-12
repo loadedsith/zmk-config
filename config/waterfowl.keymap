@@ -114,6 +114,11 @@
             key-positions = <20 21>;
             bindings = <&kp LG(Z)>;
         };
+        combo_DEL {
+            timeout-ms = <50>;
+            key-positions = <10 12>;
+            bindings = <&kp DEL>;
+        };
     };
 };
 
