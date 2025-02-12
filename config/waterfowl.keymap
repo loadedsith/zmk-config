@@ -119,6 +119,16 @@
             key-positions = <10 12>;
             bindings = <&kp DEL>;
         };
+        combo_HOME {
+            timeout-ms = <50>;
+            key-positions = <10 2>;
+            bindings = <&kp DEL>;
+        };
+        combo_END {
+            timeout-ms = <50>;
+            key-positions = <10 19>;
+            bindings = <&kp DEL>;
+        };
     };
 };
 
