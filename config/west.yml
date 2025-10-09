@@ -2,7 +2,7 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: nice_oled
+    - name: mctechnology17
       url-base: https://github.com/mctechnology17
 
     # Additional modules containing boards/shields/custom code can be listed here as well
@@ -13,7 +13,7 @@ manifest:
       revision: main
       import: app/west.yml
     - name: zmk-nice-oled
-      remote: nice_oled
+      remote: mctechnology17
       revision: main
   self:
     path: config
