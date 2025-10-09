@@ -19,6 +19,6 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: waterfowl_left nice_oled
+    shield: waterfowl_left
   - board: nice_nano_v2
-    shield: waterfowl_right nice_oled
+    shield: waterfowl_right
