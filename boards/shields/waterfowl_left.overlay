@@ -1,4 +1,5 @@
 &oled {
+  status = "okay";
   rotation = <90>;
 }
 &left_encoder {
