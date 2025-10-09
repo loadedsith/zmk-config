@@ -1,3 +1,9 @@
 &oled {
   rotation = <90>;
 }
+&left_encoder {
+  resolution = <1>;
+}
+&right_encoder {
+  resolution = <1>;
+}
