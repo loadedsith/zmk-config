@@ -18,3 +18,11 @@
         com-invdir;
     };
 };
+/* Right half: flip 180° via hardware mirrors */
+&oled {
+    segment-remap;   /* horizontal mirror */
+    com-invdir;      /* vertical mirror   */
+
+    /* optional: remove color inversion if you don't want white-on-black */
+    /delete-property/ inversion-on;
+}
