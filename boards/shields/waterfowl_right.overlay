@@ -1,4 +1,5 @@
 &oled {
   rotation = <0>;
   com-invdir;
+  segment-remap;
 }
