@@ -1,3 +1,4 @@
 &oled {
   rotation = <0>;
+  com-invdir;
 }
