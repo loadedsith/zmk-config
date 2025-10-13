@@ -1,4 +1,4 @@
-&oled {
+&i2c_oled {
   rotation = <0>;
   com-invdir;
   segment-remap;
