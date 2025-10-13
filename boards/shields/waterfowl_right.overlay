@@ -1,5 +1,5 @@
 &oled {
-    segment-remap;  
-    com-invdir;  
-    /delete-property/ inversion-on;
+    /delete-property/ segment-remap;  
+    /delete-property/ com-invdir;  
+    inversion-on;
 }
