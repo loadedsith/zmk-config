@@ -8,3 +8,13 @@
         com-invdir;
     };
 };
+&oled {
+    ssd1306: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <64>;
+        segment-remap;
+        com-invdir;
+    };
+};
