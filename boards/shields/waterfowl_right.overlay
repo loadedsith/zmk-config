@@ -1,33 +1,5 @@
-&i2c_oled {
-    ssd1306: ssd1306@3c {
-        compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
-        width = <128>;
-        height = <64>;
-        segment-remap;
-        com-invdir;
-    };
-};
 &oled {
-    ssd1306: ssd1306@3c {
-        compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
-        width = <128>;
-        height = <64>;
-        segment-remap;
-        com-invdir;
-    };
-};
-/* Right half: flip 180° via hardware mirrors */
-&oled {
-    segment-remap;   /* horizontal mirror */
-    com-invdir;      /* vertical mirror   */
-
-    /* optional: remove color inversion if you don't want white-on-black */
+    segment-remap;  
+    com-invdir;  
     /delete-property/ inversion-on;
 }
-&{/soc/i2c@40003000/ssd1306@3c} {
-    segment-remap;
-    com-invdir;
-    /delete-property/ inversion-on;
-};
