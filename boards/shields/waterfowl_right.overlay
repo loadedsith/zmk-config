@@ -26,3 +26,8 @@
     /* optional: remove color inversion if you don't want white-on-black */
     /delete-property/ inversion-on;
 }
+&{/soc/i2c@40003000/ssd1306@3c} {
+    segment-remap;
+    com-invdir;
+    /delete-property/ inversion-on;
+};
