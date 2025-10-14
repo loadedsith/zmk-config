@@ -20,7 +20,7 @@ jobs:
 
       # Build inside the container, but only for this step
       - name: Build right (produce zephyr.dts)
-        uses: docker://ghcr.io/zmkfirmware/zmk-build-arm:stable
+        uses: docker://zmkfirmware/zmk-build-arm:stable
         with:
           entrypoint: /bin/bash
           args: |
