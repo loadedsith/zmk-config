@@ -15,6 +15,7 @@ jobs:
     permissions:
       contents: read
       packages: read        # lets the runner pull ghcr.io images
+      actions: write   # <-- needed for artifact uploads on some setups
     container:
       image: ghcr.io/zmkfirmware/zmk-build-arm:stable
     steps:
@@ -31,9 +32,10 @@ jobs:
 
       - name: Upload DTS
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: dts-waterfowl-right
+          if-no-files-found: error
           path: |
             build/zephyr/zephyr.dts
             build/zephyr/zephyr.dtsi
