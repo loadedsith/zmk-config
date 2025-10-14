@@ -24,9 +24,19 @@ jobs:
         with:
           entrypoint: /bin/bash
           args: >-
-            -lc "set -euxo pipefail && west init -l config && west update &&
+            -lc "set -euxo pipefail &&
+            ls -la &&
+            test -f config/west.yml &&
+            west init -l config &&
+            # trust the mounted workspace for Git inside the container
+            git config --global --add safe.directory /github/workspace &&
+            git config --global --add safe.directory /github/workspace/zephyr ||
+            true &&
+            # or, to trust everything in CI (simplest):
+            git config --global --add safe.directory '*' &&
+            git config --global --get-all safe.directory &&
+            west update &&
             west build -s zmk/app -b nice_nano_v2 -- -DSHIELD='waterfowl_right nice_oled' -DDTC_OVERLAY_FILE='config/waterfowl_right.overlay'"
-
       - name: List artifacts (sanity)
         run: ls -la build/zephyr || true
 
