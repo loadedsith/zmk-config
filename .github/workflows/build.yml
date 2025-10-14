@@ -7,31 +7,35 @@ jobs:
     with:
       build_matrix_path: build.yaml
 
-  # One-off right-half build to grab zephyr.dts
   dts_right:
     name: Dump DTS (right half)
-    needs: zmk
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: read        # lets the runner pull ghcr.io images
-      actions: write   # <-- needed for artifact uploads on some setups
-    container:
-      image: ghcr.io/zmkfirmware/zmk-build-arm:stable
-    steps:
-      - name: Checkout config
-        uses: actions/checkout@v4
+      packages: read
+      actions: write
 
+    steps:
+      - uses: actions/checkout@v4
+
+      # Build inside the container, but only for this step
       - name: Build right (produce zephyr.dts)
-        run: |
-          west init -l .
-          west update
-          west build -s zmk/app -b nice_nano_v2 \
-            -- -DSHIELD="waterfowl_right nice_oled" \
-               -DDTC_OVERLAY_FILE="config/waterfowl_right.overlay"
+        uses: docker://ghcr.io/zmkfirmware/zmk-build-arm:stable
+        with:
+          entrypoint: /bin/bash
+          args: -lc "
+            set -euxo pipefail
+            west init -l .
+            west update
+            west build -s zmk/app -b nice_nano_v2 \
+              -- -DSHIELD='waterfowl_right nice_oled' \
+                 -DDTC_OVERLAY_FILE='config/waterfowl_right.overlay'
+          "
+
+      - name: List artifacts (sanity)
+        run: ls -la build/zephyr || true
 
       - name: Upload DTS
-        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: dts-waterfowl-right
