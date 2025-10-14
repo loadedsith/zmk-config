@@ -1,5 +1,38 @@
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  build:
+  # Your normal ZMK build via reusable workflow
+  zmk:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      # This tells the reusable workflow to read your build matrix from build.yaml
+      # (If your repo already has the standard 'build.yaml', you don't need fancy yq.)
+      build_matrix_path: build.yaml
+
+  # A separate job that compiles ONLY the right half to extract zephyr.dts
+  dts_right:
+    name: Dump DTS (right half)
+    needs: zmk
+    runs-on: ubuntu-latest
+    container: ghcr.io/zmkfirmware/zmk-build-arm:stable
+    steps:
+      - name: Checkout your config
+        uses: actions/checkout@v4
+
+      # Minimal one-off build to produce zephyr.dts with your overlay applied last
+      - name: Build right half (DTS only)
+        run: |
+          west init -l .
+          west update
+          west build -s zmk/app -b nice_nano_v2 \
+            -- -DSHIELD="waterfowl_right nice_oled" \
+               -DEXTRA_DTC_OVERLAY_FILE="config/waterfowl_right.overlay"
+
+      - name: Upload DTS
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: dts-waterfowl-right
+          path: |
+            build/zephyr/zephyr.dts
+            build/zephyr/zephyr.dtsi
