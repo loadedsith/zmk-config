@@ -23,3 +23,11 @@ include:
   - board: nice_nano_v2
     shield: waterfowl_right nice_oled
     cmake-args: -DEXTRA_DTC_OVERLAY_FILE="/tmp/zmk-config/config/waterfowl_right.overlay"
+- name: Upload DTS
+  if: ${{ always() }}
+  uses: actions/upload-artifact@v4
+  with:
+    name: dts-waterfowl-right
+    path: |
+      build/zephyr/zephyr.dts
+      build/zephyr/zephyr.dtsi
