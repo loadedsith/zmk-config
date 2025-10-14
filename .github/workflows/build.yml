@@ -23,19 +23,8 @@ jobs:
         uses: docker://zmkfirmware/zmk-build-arm:stable
         with:
           entrypoint: /bin/bash
-          args: |
-            -lc '
-              set -euxo pipefail
-              ls -la
-              test -f config/west.yml
-              west init -l config
-              git config --global --add safe.directory /github/workspace
-              git config --global --add safe.directory /github/workspace/zephyr
-              git config --global --add safe.directory "*"
-              git config --global --get-all safe.directory
-              west update
-              west build -s zmk/app -b nice_nano_v2 -- -DSHIELD="waterfowl_right nice_oled" -DDTC_OVERLAY_FILE="config/waterfowl_right.overlay"
-            '
+          args: -lc "./build_dts.sh waterfowl_right nice_oled config/waterfowl_right.overlay nice_nano_v2"
+
       - name: List artifacts (sanity)
         run: ls -la build/zephyr || true
 
