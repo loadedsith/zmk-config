@@ -23,14 +23,11 @@ jobs:
         uses: docker://ghcr.io/zmkfirmware/zmk-build-arm:stable
         with:
           entrypoint: /bin/bash
-          args: -lc "
-            set -euxo pipefail
+          args: |
+            -lc 'set -euxo pipefail
             west init -l .
             west update
-            west build -s zmk/app -b nice_nano_v2 \
-              -- -DSHIELD='waterfowl_right nice_oled' \
-                 -DDTC_OVERLAY_FILE='config/waterfowl_right.overlay'
-          "
+            west build -s zmk/app -b nice_nano_v2 -- -DSHIELD="waterfowl_right nice_oled" -DDTC_OVERLAY_FILE="config/waterfowl_right.overlay"'
 
       - name: List artifacts (sanity)
         run: ls -la build/zephyr || true
