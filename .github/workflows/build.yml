@@ -24,7 +24,7 @@ jobs:
         with:
           entrypoint: /bin/bash
           args: >-
-            -lc "set -euxo pipefail && west init -l . && west update &&
+            -lc "set -euxo pipefail && west init -l config && west update &&
             west build -s zmk/app -b nice_nano_v2 -- -DSHIELD='waterfowl_right nice_oled' -DDTC_OVERLAY_FILE='config/waterfowl_right.overlay'"
 
       - name: List artifacts (sanity)
