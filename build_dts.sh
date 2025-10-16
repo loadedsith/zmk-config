@@ -33,11 +33,14 @@ west update
 
 echo "=== West update completed, verifying..."
 
+echo "=== Checking workspace structure:"
+ls -la
+
 echo "=== Checking if zmk directory exists:"
 ls -la zmk/ || echo "zmk directory not found!"
 
-echo "=== Checking if zephyr exists in zmk:"
-ls -la zmk/zephyr 2>/dev/null || echo "zephyr not found in zmk/"
+echo "=== Checking if zephyr exists at workspace root:"
+ls -la zephyr/ || echo "zephyr not found!"
 
 echo "=== Building..."
 west build -s zmk/app -b "${BOARD}" -- \
