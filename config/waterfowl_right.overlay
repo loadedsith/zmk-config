@@ -1,3 +1,5 @@
-&oled {
-    /delete-property/ inversion-on;
+&i2c0 {
+    ssd1306@3c {
+        /delete-property/ inversion-on;
+    };
 };
