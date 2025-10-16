@@ -52,6 +52,10 @@ find zephyr -name "ZephyrConfig.cmake" || echo "ZephyrConfig.cmake not found!"
 echo "=== Sourcing Zephyr environment..."
 source zephyr/zephyr-env.sh
 
+echo "=== Setting CMAKE_PREFIX_PATH..."
+export CMAKE_PREFIX_PATH="${ZEPHYR_BASE}/share/zephyr-package/cmake"
+echo "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}"
+
 echo "=== Building..."
 west build -s zmk/app -b "${BOARD}" -- \
   -DSHIELD="${SHIELD_RIGHT} ${EXTRA_SHIELD}" \
