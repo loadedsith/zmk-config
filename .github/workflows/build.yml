@@ -9,6 +9,7 @@ jobs:
 
   dts_right:
     name: Dump DTS (right half)
+    if: false  # Disabled - enable when needed for debugging
     runs-on: ubuntu-latest
     container:
       image: zmkfirmware/zmk-build-arm:stable
