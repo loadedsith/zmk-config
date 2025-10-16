@@ -29,7 +29,12 @@ echo "=== West manifest status:"
 cat .west/config || true
 
 echo "=== Running west update..."
-west update --fetch-opt=--depth=1
+if ! west update --fetch-opt=--depth=1; then
+  echo "=== West update with depth=1 failed, retrying without depth limit..."
+  west update
+fi
+
+echo "=== West update completed, verifying..."
 
 echo "=== Checking if zmk directory exists:"
 ls -la zmk/ || echo "zmk directory not found!"
