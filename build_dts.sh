@@ -46,6 +46,12 @@ echo "=== Setting up Zephyr environment..."
 export ZEPHYR_BASE="$(pwd)/zephyr"
 echo "ZEPHYR_BASE=${ZEPHYR_BASE}"
 
+echo "=== Checking for ZephyrConfig.cmake..."
+find zephyr -name "ZephyrConfig.cmake" || echo "ZephyrConfig.cmake not found!"
+
+echo "=== Sourcing Zephyr environment..."
+source zephyr/zephyr-env.sh
+
 echo "=== Building..."
 west build -s zmk/app -b "${BOARD}" -- \
   -DSHIELD="${SHIELD_RIGHT} ${EXTRA_SHIELD}" \
