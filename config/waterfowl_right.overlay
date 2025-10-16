@@ -1,1 +1,3 @@
-
+&oled {
+    /delete-property/ inversion-on;
+};
