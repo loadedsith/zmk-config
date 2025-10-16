@@ -14,14 +14,30 @@ BOARD="${4:-nice_nano_v2}"
 test -f "${OVERLAY_PATH}"
 test -f config/west.yml
 
-# Git in container thinks workspace ownership is “dubious”
-git config --global --add safe.directory /github/workspace
-git config --global --add safe.directory /github/workspace/zephyr
+echo "=== Current directory: $(pwd)"
+echo "=== Directory listing:"
+ls -la
+
+# Git in container thinks workspace ownership is "dubious"
 git config --global --add safe.directory '*'
 
 # West setup and build
+echo "=== Initializing west workspace..."
 west init -l config
-west update
+
+echo "=== West manifest status:"
+cat .west/config || true
+
+echo "=== Running west update..."
+west update --fetch-opt=--depth=1
+
+echo "=== Checking if zmk directory exists:"
+ls -la zmk/ || echo "zmk directory not found!"
+
+echo "=== Checking if zephyr exists in zmk:"
+ls -la zmk/zephyr 2>/dev/null || echo "zephyr not found in zmk/"
+
+echo "=== Building..."
 west build -s zmk/app -b "${BOARD}" -- \
   -DSHIELD="${SHIELD_RIGHT} ${EXTRA_SHIELD}" \
   -DDTC_OVERLAY_FILE="${OVERLAY_PATH}"
