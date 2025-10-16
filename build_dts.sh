@@ -10,6 +10,9 @@ EXTRA_SHIELD="${2:-nice_oled}"
 OVERLAY_PATH="${3:-config/waterfowl_right.overlay}"
 BOARD="${4:-nice_nano_v2}"
 
+# Convert overlay path to absolute
+OVERLAY_PATH="$(realpath "${OVERLAY_PATH}")"
+
 # Sanity checks
 test -f "${OVERLAY_PATH}"
 test -f config/west.yml
