@@ -29,10 +29,7 @@ echo "=== West manifest status:"
 cat .west/config || true
 
 echo "=== Running west update..."
-if ! west update --fetch-opt=--depth=1; then
-  echo "=== West update with depth=1 failed, retrying without depth limit..."
-  west update
-fi
+west update
 
 echo "=== West update completed, verifying..."
 
