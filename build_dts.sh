@@ -42,6 +42,10 @@ ls -la zmk/ || echo "zmk directory not found!"
 echo "=== Checking if zephyr exists at workspace root:"
 ls -la zephyr/ || echo "zephyr not found!"
 
+echo "=== Setting up Zephyr environment..."
+export ZEPHYR_BASE="$(pwd)/zephyr"
+echo "ZEPHYR_BASE=${ZEPHYR_BASE}"
+
 echo "=== Building..."
 west build -s zmk/app -b "${BOARD}" -- \
   -DSHIELD="${SHIELD_RIGHT} ${EXTRA_SHIELD}" \
