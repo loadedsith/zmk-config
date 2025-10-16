@@ -1,5 +1,6 @@
 &i2c0 {
     ssd1306@3c {
-        /delete-property/ inversion-on;
+        segment-remap;
+        com-invdir;
     };
 };
