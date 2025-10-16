@@ -10,6 +10,8 @@ jobs:
   dts_right:
     name: Dump DTS (right half)
     runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
     permissions:
       contents: read
       packages: read
@@ -18,12 +20,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Build inside the container, but only for this step
       - name: Build right (produce zephyr.dts)
-        uses: docker://zmkfirmware/zmk-build-arm:stable
-        with:
-          entrypoint: /bin/bash
-          args: -lc "./build_dts.sh waterfowl_right nice_oled config/waterfowl_right.overlay nice_nano_v2"
+        run: ./build_dts.sh waterfowl_right nice_oled config/waterfowl_right.overlay nice_nano_v2
 
       - name: List artifacts (sanity)
         run: ls -la build/zephyr || true
