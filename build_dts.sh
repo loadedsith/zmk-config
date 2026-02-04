@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Usage: build_dts.sh <shield_right> <extra_shield> <overlay_path> <board>
-# Example: build_dts.sh waterfowl_right nice_oled config/waterfowl_right.overlay nice_nano
+# Example: build_dts.sh waterfowl_right nice_oled config/waterfowl_right.overlay nice_nano_v2
 set -euo pipefail
 IFS=$'\n\t'
 set -x
@@ -8,7 +8,7 @@ set -x
 SHIELD_RIGHT="${1:-waterfowl_right}"
 EXTRA_SHIELD="${2:-nice_oled}"
 OVERLAY_PATH="${3:-config/waterfowl_right.overlay}"
-BOARD="${4:-nice_nano}"
+BOARD="${4:-nice_nano_v2}"
 
 # Convert overlay path to absolute
 OVERLAY_PATH="$(realpath "${OVERLAY_PATH}")"
