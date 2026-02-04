@@ -121,13 +121,13 @@
         };
         combo_HOME {
             timeout-ms = <50>;
-            key-positions = <10 2>;
-            bindings = <&kp DEL>;
+            key-positions = <31 33 15>;
+            bindings = <&kp HOME>;
         };
         combo_END {
             timeout-ms = <50>;
-            key-positions = <10 19>;
-            bindings = <&kp DEL>;
+            key-positions = <31 33 18>;
+            bindings = <&kp END>;
         };
     };
 };
