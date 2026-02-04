@@ -40,6 +40,26 @@
 };
 
 / {
+    behaviors {
+        gui_left_home: gui_left_home {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT>, <&kp HOME>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+        };
+        gui_right_end: gui_right_end {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT>, <&kp END>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+        };
+        ctrl_d_del: ctrl_d_del {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp D>, <&kp DEL>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+    };
     combos {
         compatible = "zmk,combos";
         /*
@@ -119,16 +139,6 @@
             key-positions = <10 12>;
             bindings = <&kp DEL>;
         };
-        combo_HOME {
-            timeout-ms = <50>;
-            key-positions = <31 33 15>;
-            bindings = <&kp HOME>;
-        };
-        combo_END {
-            timeout-ms = <50>;
-            key-positions = <31 33 18>;
-            bindings = <&kp END>;
-        };
     };
 };
 
@@ -152,7 +162,7 @@
  */
             bindings = <
     &kp Q        &kp W         &kp E       &kp R       &kp T           &kp Y   &kp U       &kp I       &kp O       &kp P
-    &mt LCTRL A  &kp S         &kp D       &kp F       &kp G           &kp H   &kp J       &kp K       &kp L       &mt LCTRL SEMI
+    &mt LCTRL A  &kp S         &ctrl_d_del &kp F       &kp G           &kp H   &kp J       &kp K       &kp L       &mt LCTRL SEMI
     &mt LSHIFT Z &kp X         &kp C       &kp V       &kp B           &kp N   &kp M       &kp COMMA   &kp DOT     &mt LSHIFT FSLH
     &kp LG(LBRC)
     &kp LALT      &mt LGUI RET       &lt 2 SPACE
@@ -185,7 +195,7 @@
  */
             bindings = <
     &kp N1      &kp N2      &kp N3      &kp N4      &kp N5                  &kp N6      &kp N7    &kp N8       &kp N9            &kp N0
-    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                  &kp LEFT    &kp DOWN  &kp UP       &kp RIGHT         &trans
+    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                  &gui_left_home    &kp DOWN  &kp UP       &gui_right_end    &trans
     &mt LSHIFT F6      &kp F7      &kp F8      &kp F9      &kp F10          &kp F11     &kp F12   &trans       &trans            &trans
     &bt BT_CLR
     &trans &trans &trans
