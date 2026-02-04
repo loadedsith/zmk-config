@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build right (produce zephyr.dts)
-        run: ./build_dts.sh waterfowl_right nice_oled config/waterfowl_right.overlay nice_nano_v2
+        run: ./build_dts.sh waterfowl_right nice_oled config/waterfowl_right.overlay nice_nano
 
       - name: List artifacts (sanity)
         run: ls -la build/zephyr || true
