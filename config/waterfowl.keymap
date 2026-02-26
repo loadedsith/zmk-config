@@ -53,12 +53,6 @@
             bindings = <&kp RIGHT>, <&kp END>;
             mods = <(MOD_LGUI|MOD_RGUI)>;
         };
-        ctrl_d_del: ctrl_d_del {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp D>, <&kp DEL>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
     };
     combos {
         compatible = "zmk,combos";
