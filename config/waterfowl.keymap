@@ -151,7 +151,7 @@
  */
             bindings = <
     &kp Q        &kp W         &kp E       &kp R       &kp T           &kp Y   &kp U       &kp I       &kp O       &kp P
-    &mt LCTRL A  &kp S         &ctrl_d_del &kp F       &kp G           &kp H   &kp J       &kp K       &kp L       &mt LCTRL SEMI
+    &mt LCTRL A  &kp S         &kp D       &kp F       &kp G           &kp H   &kp J       &kp K       &kp L       &mt LCTRL SEMI
     &mt LSHIFT Z &kp X         &kp C       &kp V       &kp B           &kp N   &kp M       &kp COMMA   &kp DOT     &mt LSHIFT FSLH
     &kp LG(LBRC)
     &kp LALT      &mt LGUI RET       &lt 2 SPACE
