@@ -53,12 +53,6 @@
             bindings = <&kp RIGHT>, <&kp END>;
             mods = <(MOD_LGUI|MOD_RGUI)>;
         };
-        alt_dictation: alt_dictation {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LALT>, <&kp F24>;
-        };
     };
     combos {
         compatible = "zmk,combos";
@@ -133,6 +127,14 @@
             timeout-ms = <50>;
             key-positions = <20 21>;
             bindings = <&kp LG(Z)>;
+        };
+
+        combo_dictation {
+            key-positions = <0 3>;
+            layers = <0>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <100>;
+            bindings = <&kp F24>;
         };
     };
 };
